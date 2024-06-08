@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.google.com/specimen/Maven+Pro" rel="stylesheet">
+</head>
+<body>
+    <div>
+        <img src="./assets/bus.png" width="1900px" height="1000px" />
+        
+        <div>
+            <h1 style="margin: -991px 0px 0px 12px;font-family: Arial, Helvetica, sans-serif;color: white;font-size: 61px;">🚌Tours And Travels</h1> 
+        </div>
+        <div style="margin:-73px 0px 0px 1237px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); background-color: rgba(0, 0, 0, 0.5); padding: 10px;">
+            <ul style="color: white;font-size: 20px;">
+                <li style="list-style: none;display: inline;margin: 45px" class="navItem">Home</li>
+                <li style="list-style: none;display: inline;margin: 45px" class="navItem">Contact</li>
+                <li style="list-style: none;display: inline;margin: 45px;" class="navItem">
+                    <a href="./login.html" style="color: inherit; text-decoration: none;">Login</a>
+                </li>
+                <li style="list-style: none;display: inline;margin: 45px" class="navItem">About</li>
+            </ul>
+        </div>
+        <div style="font-family: Arial, sans-serif; background-color: #2d2d2d; color: #fff; display: flex; justify-content: center; align-items: center; height: 100vh; margin: -100px;">
+            <div class="container" style="background-color: #333; border-radius: 10px; box-shadow: 0 0 15px rgba(243, 232, 232, 0.3); padding: 20px; display: flex; flex-direction: column; align-items: center;">
+                <div class="tabs" style="display: flex; margin-bottom: 20px;">
+                    <button id="book-tab" class="active" style="background-color: transparent; border: none; color: #fff; padding: 10px 20px; cursor: pointer; transition: background-color 0.3s; background-color: #555; border-radius: 5px;">Book Bus tickets</button>
+                    
+                </div>
+                <div class="search-container" style="background-color: #2b2b2b; border-radius: 10px; padding: 10px; display: flex; gap: 10px; align-items: center;">
+                    <input type="text" id="from" placeholder="From" style="background-color: #444; color: #fff; border: none; border-radius: 5px; padding: 10px; font-size: 16px; flex: 1;">
+                    <input type="text" id="to" placeholder="To" style="background-color: #444; color: #fff; border: none; border-radius: 5px; padding: 10px; font-size: 16px; flex: 1;">
+                    <div>
+                        <input type="date" id="date" value="2024-06-07" style="background-color: #444; color: #fff; border: none; border-radius: 5px; padding: 10px; font-size: 16px;">
+                    </div>
+                    
+                    <button id="search-btn" onclick="window.location.href='login.html';" style="background-color: #d32f2f; cursor: pointer; transition: background-color 0.3s; background-color: #f44336; border: none; border-radius: 5px; padding: 10px; font-size: 16px;">Search Bus</button>
+                </div>
+            </div>
+            <script>
+                const bookTab = document.getElementById('book-tab');
+                const pnrTab = document.getElementById('pnr-tab');
+                const liveTab = document.getElementById('live-tab');
+        
+                bookTab.addEventListener('click', () => {
+                    bookTab.classList.add('active');
+                    pnrTab.classList.remove('active');
+                    liveTab.classList.remove('active');
+                    bookTab.style.backgroundColor = '#555';
+                    pnrTab.style.backgroundColor = 'transparent';
+                    liveTab.style.backgroundColor = 'transparent';
+                });
+        
+                pnrTab.addEventListener('click', () => {
+                    pnrTab.classList.add('active');
+                    bookTab.classList.remove('active');
+                    liveTab.classList.remove('active');
+                    pnrTab.style.backgroundColor = '#555';
+                    bookTab.style.backgroundColor = 'transparent';
+                    liveTab.style.backgroundColor = 'transparent';
+                });
+        
+                liveTab.addEventListener('click', () => {
+                    liveTab.classList.add('active');
+                    bookTab.classList.remove('active');
+                    pnrTab.classList.remove('active');
+                    liveTab.style.backgroundColor = '#555';
+                    bookTab.style.backgroundColor = 'transparent';
+                    pnrTab.style.backgroundColor = 'transparent';
+                });
+        
+                document.getElementById('search-btn').addEventListener('click', () => {
+                    const from = document.getElementById('from').value;
+                    const to = document.getElementById('to').value;
+                    const date = document.getElementById('date').value;
+                    const freeCancellation = document.getElementById('free-cancellation').checked;
+
+                    // Construct the URL with query parameters
+                    const nextPageUrl = `nextpage.html?from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}&date=${encodeURIComponent(date)}`;
+
+                    // Redirect to the next page
+                    window.location.href = nextPageUrl;
+                });
+            </script>
+        </div>
+    </div>
+
+    <script>
+        const navItems = document.querySelectorAll('.navItem');
+
+        navItems.forEach(item => {
+            item.addEventListener('mouseover', () => {
+                item.style.color = 'yellow';
+            });
+
+            item.addEventListener('mouseout', () => {
+                item.style.color = 'white';
+            });
+        });
+
+        // Handle hover for links within nav items
+        const navLinks = document.querySelectorAll('.navItem a');
+
+        navLinks.forEach(link => {
+            link.addEventListener('mouseover', () => {
+                link.style.color = 'yellow';
+            });
+
+            link.addEventListener('mouseout', () => {
+                link.style.color = 'white';
+            });
+        });
+    </script>
+</body>
+</html>
